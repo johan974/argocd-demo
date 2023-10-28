@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: demo
-    repoURL: "https://github.com/johan974/quotes.git"
+    repoURL: "https://github.com/johan974/argocd-demo.git"
     targetRevision: HEAD
   syncPolicy:
     automated:
