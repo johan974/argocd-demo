@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sb2demo
+  name: quotes
 spec:
   replicas: 1
   strategy:
@@ -11,16 +11,16 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: sb2demo
+      app: quotes
   revisionHistoryLimit: 1
   template:
     metadata:
       labels:
-        app: sb2demo
+        app: quotes
     spec:
       containers:
-        - name: sb2demo
-          image: solvedshared/sb2demo:v2
+        - name: quotes
+          image: solvedshared/quotes:v2
           imagePullPolicy: IfNotPresent
           env:
             - name: ENVIR_VAR1
