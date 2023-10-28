@@ -27,19 +27,19 @@ spec:
               value: "a-value"
           ports:
             - containerPort: 8080
-          livenessProbe:
-            failureThreshold: 6
-            httpGet:
-              path: /actuator/health
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 55
-            periodSeconds: 5
-          readinessProbe:
-            failureThreshold: 6
-            httpGet:
-              path: /actuator/health
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 45
-            periodSeconds: 5
+#          livenessProbe:
+#            failureThreshold: 6
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#              scheme: HTTP
+#            initialDelaySeconds: 55
+#            periodSeconds: 5
+#          readinessProbe:
+#            failureThreshold: 6
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#              scheme: HTTP
+#            initialDelaySeconds: 45
+#            periodSeconds: 5
