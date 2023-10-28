@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sb2demo
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: sb2demo
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: sb2demo
+    spec:
+      containers:
+        - name: sb2demo
+          image: solvedshared/sb2demo:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ENVIR_VAR1
+              value: "a-value"
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 55
+            periodSeconds: 5
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 45
+            periodSeconds: 5
