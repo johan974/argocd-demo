@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: sb2demo
-          image: solvedshared/sb2demo:latest
+          image: solvedshared/sb2demo:v2
           imagePullPolicy: IfNotPresent
           env:
             - name: ENVIR_VAR1
