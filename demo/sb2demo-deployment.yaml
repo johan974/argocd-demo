@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: quotes
-          image: solvedshared/quotes:v3
+          image: solvedshared/quotes:v4
           imagePullPolicy: IfNotPresent
           env:
             - name: ENVIR_VAR1
