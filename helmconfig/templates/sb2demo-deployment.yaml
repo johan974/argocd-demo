@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.appName}}
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: {{.Values.appName}}
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: {{.Values.appName}}
+    spec:
+      containers:
+        - name: {{.Values.appName}}
+          image: {{.Values.image.name -}}:{{- .Values.image.version}}
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ENVIR_VAR1
+              value: "a-value"
+          ports:
+            - containerPort: {{.Values.service.port}}
