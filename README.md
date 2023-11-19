@@ -13,3 +13,4 @@
   - Copy the application of the source folder to a Helm chart version
   - Edit it to refer to the helmconfig folder
   - $ kubectl apply -f argocd-demo-helm-public.yaml
+- Browse to: http://localhost:8080/random-quote
