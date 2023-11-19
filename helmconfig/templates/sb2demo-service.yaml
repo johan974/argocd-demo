@@ -5,9 +5,9 @@ metadata:
 spec:
   ports:
     - name: http
-      port: {{.Values.service.port }}
+      port: {{.Values.service.externalPort }}
       protocol: TCP
-      targetPort: {{.Values.service.port}}
+      targetPort: {{.Values.service.internalPort}}
   selector:
     app: {{.Values.appName}}
   type: {{.Values.service.type}}

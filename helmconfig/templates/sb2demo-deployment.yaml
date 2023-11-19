@@ -26,4 +26,4 @@ spec:
             - name: ENVIR_VAR1
               value: "a-value"
           ports:
-            - containerPort: {{.Values.service.port}}
+            - containerPort: {{.Values.service.internalPort}}
