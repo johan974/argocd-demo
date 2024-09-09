@@ -1,0 +1,27 @@
+# Default values for helmconfig.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+appName: systemtester
+
+replicaCount: 1
+
+systemtester:
+  name: bgtloadtester
+  image:
+    name: solvedshared/bgtloadtester
+    version: v20240907
+  service:
+    type: LoadBalancer
+    internalPort: 8080
+    externalPort: 8080
+
+bgtsimulator:
+  name: bgtsimulator
+  image:
+    name: solvedshared/bgtsimulator
+    version: v1
+  service:
+    type: LoadBalancer
+    internalPort: 8090
+    externalPort: 8090

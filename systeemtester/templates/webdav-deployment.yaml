@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webdav
+  name: webdav
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webdav
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: webdav
+    spec:
+      containers:
+        - env:
+            - name: BASIC_AUTH
+              value: "True"
+            - name: WEBDAV_LOGGIN
+              value: "info"
+            - name: WEBDAV_USERNAME
+              value: "user"
+            - name: WEBDAV_PASSWORD
+              value: "pass"
+          image: tapxxor/webdav:latest
+          name: webdav
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /uploads
+              name: webdav-storage
+      restartPolicy: Always
+      volumes:
+        - name: webdav-storage
+          hostPath:
+            path: /run/desktop/mnt/host/g/data/webdav
+            type: Directory

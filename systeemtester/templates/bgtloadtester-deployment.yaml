@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{.Values.systemtester.name}}
+  name: {{.Values.systemtester.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{.Values.systemtester.name}}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: {{.Values.systemtester.name}}
+    spec:
+      containers:
+        - env:
+            - name: ophaalverzoek.url
+              value: http://{{.Values.bgtsimulator.name -}}:{{- .Values.bgtsimulator.service.externalPort}}/ophaalverzoek
+          image: {{.Values.systemtester.image.name -}}:{{- .Values.systemtester.image.version}}
+          name: {{.Values.systemtester.name}}
+          ports:
+            - containerPort: {{.Values.systemtester.service.internalPort}}
+          resources: {}
+      restartPolicy: Always
