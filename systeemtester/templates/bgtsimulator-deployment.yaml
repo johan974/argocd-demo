@@ -29,4 +29,4 @@ spec:
           ports:
             - containerPort: {{.Values.bgtsimulator.service.internalPort}}
           resources: {}
-      restartPolicy: Always
+      restartPolicy: Always" " 
