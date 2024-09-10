@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sba
+  name: sba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sba
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sba
+    spec:
+      containers:
+        - env:
+            - name: spring.application.name
+              value: "sba"
+            - name: server.port
+              value: "8099"
+          image: codecentric/spring-boot-admin:3.0
+          name: sba
+          ports:
+            - containerPort: 8099
+      restartPolicy: Always

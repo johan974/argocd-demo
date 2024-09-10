@@ -20,6 +20,12 @@ spec:
     spec:
       containers:
         - env:
+            - name: spring.boot.admin.client.url
+              value: "http://sba:8099/"
+            - name: management.endpoints.web.exposure.include
+              value: "*"
+            - name: management.info.env.enabled
+              value: "true"
             - name: mutatieverslag.ophaalverzoek.url
               value: http://{{.Values.systemtester.name -}}:{{- .Values.systemtester.service.internalPort}}/aanleveraar/mutatiestatus
             - name: spring.activemq.broker-url

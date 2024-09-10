@@ -20,6 +20,12 @@ spec:
     spec:
       containers:
         - env:
+            - name: spring.boot.admin.client.url
+              value: "http://sba:8099/"
+            - name: management.endpoints.web.exposure.include
+              value: "*"
+            - name: management.info.env.enabled
+              value: "true"
             - name: ophaalverzoek.url
               value: http://{{.Values.bgtsimulator.name -}}:{{- .Values.bgtsimulator.service.externalPort}}/ophaalverzoek
           image: {{.Values.systemtester.image.name -}}:{{- .Values.systemtester.image.version}}

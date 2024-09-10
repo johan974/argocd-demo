@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sba
+  labels:
+    app: sba
+spec:
+  ports:
+    - name: "webdav-port"
+      port: 8099
+      protocol: TCP
+      targetPort: 8099
+  selector:
+    app: sba
+  type: LoadBalancer
