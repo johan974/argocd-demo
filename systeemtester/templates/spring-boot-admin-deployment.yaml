@@ -26,4 +26,4 @@ spec:
           name: sba
           ports:
             - containerPort: 8099
-      restartPolicy: Always
+      restartPolicy: Always# 
