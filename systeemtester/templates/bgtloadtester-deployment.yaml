@@ -21,7 +21,7 @@ spec:
       containers:
         - env:
             - name: spring.boot.admin.client.url
-              value: "http://sba:8099/"
+              value: "http://{{.Values.springbootadmin.name -}}:{{- .Values.springbootadmin.port}}/"
             - name: management.endpoints.web.exposure.include
               value: "*"
             - name: management.info.env.enabled

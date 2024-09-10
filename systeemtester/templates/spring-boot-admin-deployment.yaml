@@ -2,30 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: sba
-  name: sba
+    app: {{.Values.springbootadmin.name}}
+  name: {{.Values.springbootadmin.name}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sba
+      app: {{.Values.springbootadmin.name}}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: sba
+        app:
     spec:
       containers:
         - env:
             - name: spring.application.name
-              value: "sba"
+              value: "{{.Values.springbootadmin.name}}"
             - name: server.port
-              value: "8099"
-          image: codecentric/spring-boot-admin:3.0
-          name: sba
+              value: "{{.Values.springbootadmin.port}}"
+          image: "solvedshared/{{.Values.springbootadmin.name -}}:{{- .Values.springbootadmin.version}}"
+          name: {{.Values.springbootadmin.name}}
           ports:
-            - containerPort: 8099
-      restartPolicy: Always# 
+            - containerPort: {{.Values.springbootadmin.port}}
+      restartPolicy: Always
 # 
 # 

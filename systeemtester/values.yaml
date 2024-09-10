@@ -25,3 +25,8 @@ bgtsimulator:
     type: LoadBalancer
     internalPort: 8090
     externalPort: 8090
+
+springbootadmin:
+  name: sbadmin
+  port: 8099
+  version: v20240910
