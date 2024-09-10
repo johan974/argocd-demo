@@ -14,3 +14,5 @@
   - Edit it to refer to the helmconfig folder
   - $ kubectl apply -f argocd-demo-helm-public.yaml
 - Browse to: http://localhost:8080/random-quote
+"Another update" 
+"Another update" 
