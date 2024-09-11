@@ -24,6 +24,7 @@ spec:
               value: "{{.Values.springbootadmin.port}}"
           image: "solvedshared/{{.Values.springbootadmin.name -}}:{{- .Values.springbootadmin.version}}"
           name: {{.Values.springbootadmin.name}}
+          imagePullPolicy: Always
           ports:
             - containerPort: {{.Values.springbootadmin.port}}
       restartPolicy: Always
