@@ -27,6 +27,3 @@ spec:
           ports:
             - containerPort: {{.Values.springbootadmin.port}}
       restartPolicy: Always
-# 
-# 
-# 
