@@ -12,5 +12,5 @@ spec:
       targetPort: {{.Values.bgtsimulator.service.internalPort}}
   selector:
     io.kompose.service: {{.Values.bgtsimulator.name}}
-status:
-  loadBalancer: {}
+  type: LoadBalancer
+
