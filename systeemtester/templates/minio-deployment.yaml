@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: minio
+  name: minio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - env:
+            - name: MINIO_BROWSER_REDIRECT_URL
+              value: "https://localhost/minio/"
+            - name: MINIO_ROOT_USER
+              value: "admin"
+            - name: MINIO_ROOT_PASSWORD
+              value: "admin123"
+            - name: MINIO_DEFAULT_BUCKETS
+              value: "pdok"
+          image: minio/minio:latest
+          name: minio
+          ports:
+            - containerPort: 9000
+            - containerPort: 9001
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /data
+              name: minio-storage
+      restartPolicy: Always
+      volumes:
+        - name: minio-storage
+          hostPath:
+            path: /run/desktop/mnt/host/g/data/minio
+            type: Directory
