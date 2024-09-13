@@ -26,7 +26,7 @@ spec:
               value: "admin123"
             - name: MINIO_DEFAULT_BUCKETS
               value: "pdok"
-          image: minio/minio:latest
+          image: bitnami/minio:latest
           name: minio
           ports:
             - containerPort: 9000
