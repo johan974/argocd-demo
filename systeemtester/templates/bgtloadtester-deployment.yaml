@@ -51,9 +51,9 @@ spec:
             - name: s3.client.bucket
               value: pdok
             - name: s3.client.accesskey
-              value: KbYl1QT1bIy1oocGDyti
+              value: oicEnvwFUDxcsAbNveTV
             - name: s3.client.secret
-              value: 1k3FgvNOgoZGcCp3Ttx0WSqISIypZu7dZi9unCsV
+              value: MS9soehsJ0wUUKypwVeBgwp3QTe6zoI9B23wBqqW
           image: {{.Values.systemtester.image.name -}}:{{- .Values.systemtester.image.version}}
           imagePullPolicy: Always
           name: {{.Values.systemtester.name}}
