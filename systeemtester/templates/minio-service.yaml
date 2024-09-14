@@ -16,4 +16,4 @@ spec:
       nodePort: 30037
   selector:
     name: minio
-  type: NodePort
+  type: LoadBalancer

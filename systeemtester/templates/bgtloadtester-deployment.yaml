@@ -40,6 +40,20 @@ spec:
               value: org.hibernate.dialect.PostgreSQLDialect
             - name: spring.jpa.hibernate.database-platform
               value: org.hibernate.spatial.dialect.postgis.PostgisDialect
+            - name: s3.client.endpoint
+              value: minio
+            - name: s3.client.port
+              value: "9000"
+            - name: s3.client.secured
+              value: "false"
+            - name: s3.client.region
+              value: none
+            - name: s3.client.bucket
+              value: pdok
+            - name: s3.client.accesskey
+              value: KbYl1QT1bIy1oocGDyti
+            - name: s3.client.secret
+              value: 1k3FgvNOgoZGcCp3Ttx0WSqISIypZu7dZi9unCsV
           image: {{.Values.systemtester.image.name -}}:{{- .Values.systemtester.image.version}}
           imagePullPolicy: Always
           name: {{.Values.systemtester.name}}
