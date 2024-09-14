@@ -24,8 +24,13 @@ spec:
               value: "admin123"
             - name: MINIO_DEFAULT_BUCKETS
               value: "pdok"
-          image: bitnami/minio:2024
           name: minio
+          image: minio/minio
+          command:
+            - /bin/bash
+            - -c
+          args:
+            - minio server /data --console-address :9001
           ports:
             - containerPort: 9000
             - containerPort: 9001
@@ -37,5 +42,5 @@ spec:
       volumes:
         - name: minio-storage
           hostPath:
-            path: /run/desktop/mnt/host/g/data/minio
+            path: /run/desktop/mnt/host/g/data/minios3
             type: Directory
