@@ -45,9 +45,3 @@ spec:
           hostPath:
             path: /run/desktop/mnt/host/g/data/minionfs2
             type: Directory
-#    volumes:
-#      - name: minio-volume
-#        nfs:
-#          server: node004.b9tcluster.local
-#          path: /data
-  #          readOnly: no
