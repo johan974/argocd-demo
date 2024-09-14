@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgresdb
+  name: postgresdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: postgresdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: postgresdb
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: chatbotdb
+            - name: POSTGRES_PASSWORD
+              value: bladibladibla
+            - name: POSTGRES_USER
+              value: johan
+          image: postgis/postgis:15-master
+          name: postgresdb
+          ports:
+            - containerPort: 5432
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdb-claim0
+      restartPolicy: Always
+      volumes:
+        - name: postgresdb-claim0
+          hostPath:
+            path: /run/desktop/mnt/host/g/data/postgis
+            type: Directory
