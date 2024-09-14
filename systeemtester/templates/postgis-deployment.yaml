@@ -26,7 +26,7 @@ spec:
               value: bladibladibla
             - name: POSTGRES_USER
               value: johan
-          image: postgis/postgis:15-master
+          image: postgis/postgis:16-master
           name: postgresdb
           ports:
             - containerPort: 5432
