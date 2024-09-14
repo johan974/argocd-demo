@@ -30,6 +30,14 @@ spec:
               value: http://{{.Values.systemtester.name -}}:{{- .Values.systemtester.service.internalPort}}/aanleveraar/mutatiestatus
             - name: spring.activemq.broker-url
               value: tcp://activemq:61616
+            - name: spring.datasource.url
+              value: jdbc:postgresql://postgresdb:5432/postgis
+            - name: spring.datasource.username
+              value: postgis
+            - name: spring.datasource.password
+              value: postgis
+            - name: spring.jpa.hibernate.naming
+              value: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
           image: {{.Values.bgtsimulator.image.name -}}:{{- .Values.bgtsimulator.image.version}}
           imagePullPolicy: Always
           name: {{.Values.bgtsimulator.name}}
@@ -37,7 +45,7 @@ spec:
             - containerPort: {{.Values.bgtsimulator.service.internalPort}}
           resources: {}
       restartPolicy: Always
-# 
+#
 # 
 # 
 # 
