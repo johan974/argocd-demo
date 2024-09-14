@@ -21,11 +21,11 @@ spec:
       containers:
         - env:
             - name: POSTGRES_DB
-              value: chatbotdb
+              value: postgis
             - name: POSTGRES_PASSWORD
-              value: bladibladibla
+              value: postgis
             - name: POSTGRES_USER
-              value: johan
+              value: postgis
           image: postgis/postgis:16-master
           name: postgresdb
           ports:
