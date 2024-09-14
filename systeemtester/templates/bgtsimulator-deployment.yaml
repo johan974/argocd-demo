@@ -51,9 +51,15 @@ spec:
             - name: s3.client.bucket
               value: pdok
             - name: s3.client.accesskey
-              value: ks9OloTb838gnCJRRber
+              valueFrom:
+                secretKeyRef:
+                  name: minio-account
+                  key: accessKey
             - name: s3.client.secret
-              value: xVszMtD3vHg1JaOYLsvL2ozJpHrsZ9epVhCzk14D
+              valueFrom:
+                secretKeyRef:
+                  name: minio-account
+                  key: secretKey
           image: {{.Values.bgtsimulator.image.name -}}:{{- .Values.bgtsimulator.image.version}}
           imagePullPolicy: Always
           name: {{.Values.bgtsimulator.name}}
