@@ -36,6 +36,10 @@ spec:
               value: postgis
             - name: spring.datasource.password
               value: postgis
+            - name: spring.jpa.database-platform
+              value: org.hibernate.dialect.PostgreSQLDialect
+            - name: spring.jpa.hibernate.database-platform
+              value: org.hibernate.spatial.dialect.postgis.PostgisDialect
           image: {{.Values.bgtsimulator.image.name -}}:{{- .Values.bgtsimulator.image.version}}
           imagePullPolicy: Always
           name: {{.Values.bgtsimulator.name}}
