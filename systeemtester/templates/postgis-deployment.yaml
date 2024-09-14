@@ -27,6 +27,7 @@ spec:
             - name: POSTGRES_USER
               value: postgis
           image: postgis/postgis:16-master
+          imagePullPolicy: Always
           name: postgresdb
           ports:
             - containerPort: 5432
