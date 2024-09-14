@@ -36,8 +36,6 @@ spec:
               value: postgis
             - name: spring.datasource.password
               value: postgis
-            - name: spring.jpa.hibernate.naming
-              value: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
           image: {{.Values.bgtsimulator.image.name -}}:{{- .Values.bgtsimulator.image.version}}
           imagePullPolicy: Always
           name: {{.Values.bgtsimulator.name}}
