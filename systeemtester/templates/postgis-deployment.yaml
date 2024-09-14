@@ -39,5 +39,5 @@ spec:
       volumes:
         - name: postgresdb-claim0
           hostPath:
-            path: /run/desktop/mnt/host/g/data/postgis
+            path: /run/desktop/mnt/host/g/data/postgis2
             type: Directory
