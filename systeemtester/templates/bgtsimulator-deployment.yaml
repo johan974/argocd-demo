@@ -51,9 +51,9 @@ spec:
             - name: s3.client.bucket
               value: pdok
             - name: s3.client.accesskey
-              value: oicEnvwFUDxcsAbNveTV
+              value: ks9OloTb838gnCJRRber
             - name: s3.client.secret
-              value: MS9soehsJ0wUUKypwVeBgwp3QTe6zoI9B23wBqqW
+              value: xVszMtD3vHg1JaOYLsvL2ozJpHrsZ9epVhCzk14D
           image: {{.Values.bgtsimulator.image.name -}}:{{- .Values.bgtsimulator.image.version}}
           imagePullPolicy: Always
           name: {{.Values.bgtsimulator.name}}
