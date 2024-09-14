@@ -1,0 +1,1 @@
+kubectl create secret generic minio-account --from-literal=accessKey=myaccesskey --from-literal=secretKey=mysecretkey --from-literal=adminname=minioadmin  --from-literal=adminpassword=minioadmin

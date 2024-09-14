@@ -2,28 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: minio
+    name: minio
   name: minio
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: minio
-  strategy:
-    type: Recreate
+      name: minio
   template:
     metadata:
       labels:
-        app: minio
+        name: minio
     spec:
       containers:
         - env:
             - name: MINIO_ROOT_USER
-              value: "admin"
+              valueFrom:
+                secretKeyRef:
+                  name: minio-account
+                  key: adminname
             - name: MINIO_ROOT_PASSWORD
-              value: "admin123"
-            - name: MINIO_DEFAULT_BUCKETS
-              value: "pdok"
+              valueFrom:
+                secretKeyRef:
+                  name: minio-account
+                  key: adminpassword
           name: minio
           image: minio/minio
           command:
@@ -34,13 +36,18 @@ spec:
           ports:
             - containerPort: 9000
             - containerPort: 9001
-          imagePullPolicy: Always
           volumeMounts:
-            - mountPath: /data
-              name: minio-storage
+            - name: minio-volume
+              mountPath: /data
       restartPolicy: Always
       volumes:
-        - name: minio-storage
+        - name: minio-volume
           hostPath:
-            path: /run/desktop/mnt/host/g/data/minios3
+            path: /run/desktop/mnt/host/g/data/minionfs2
             type: Directory
+#    volumes:
+#      - name: minio-volume
+#        nfs:
+#          server: node004.b9tcluster.local
+#          path: /data
+  #          readOnly: no
