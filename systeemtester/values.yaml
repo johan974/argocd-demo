@@ -27,9 +27,9 @@ bgtsimulator:
     externalPort: 8090
 
 bgtvspdokdoorlevering:
-  name: bgtvspdokdoorlevering
+  name: bgtvspdokdelivery
   image:
-    name: solvedshared/bgtvspdokdoorlevering
+    name: solvedshared/bgtvspdokdelivery
     version: v1
   service:
     type: LoadBalancer
