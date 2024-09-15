@@ -26,6 +26,16 @@ bgtsimulator:
     internalPort: 8090
     externalPort: 8090
 
+bgtvspdokdoorlevering:
+  name: bgtvspdokdoorlevering
+  image:
+    name: solvedshared/bgtvspdokdoorlevering
+    version: v1
+  service:
+    type: LoadBalancer
+    internalPort: 8095
+    externalPort: 8095
+
 springbootadmin:
   name: sbadmin
   port: 8099

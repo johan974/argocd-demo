@@ -30,6 +30,8 @@ spec:
               value: http://{{.Values.systemtester.name -}}:{{- .Values.systemtester.service.internalPort}}/aanleveraar/mutatiestatus
             - name: spring.activemq.broker-url
               value: tcp://activemq:61616
+            - name: delivery.client.endpoint
+              value: http://bgtvspdokdelivery:8095/pdok/notification/start
             - name: spring.datasource.url
               value: jdbc:postgresql://postgresdb:5432/postgis
             - name: spring.datasource.username

@@ -1,5 +1,68 @@
-# 
-# 
-# 
-# 
-# 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: {{.Values.bgtvspdokdoorlevering.name}}
+  name: {{.Values.bgtvspdokdoorlevering.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{.Values.bgtvspdokdoorlevering.name}}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: {{.Values.bgtvspdokdoorlevering.name}}
+    spec:
+      containers:
+        - env:
+            - name: spring.boot.admin.client.url
+              value: "http://{{.Values.springbootadmin.name -}}:{{- .Values.springbootadmin.port}}/"
+            - name: management.endpoints.web.exposure.include
+              value: "*"
+            - name: management.info.env.enabled
+              value: "true"
+            - name: pdok.simulator.initialize
+              value: http://bgtsimulator:8090/pdok/doorlevering/initialize
+            - name: pdok.simulator.endpoint
+              value: http://bgtsimulator:8090/pdok/doorlevering/start
+            - name: spring.datasource.url
+              value: jdbc:postgresql://postgresdb:5432/postgis
+            - name: spring.datasource.username
+              value: postgis
+            - name: spring.datasource.password
+              value: postgis
+            - name: spring.jpa.database-platform
+              value: org.hibernate.dialect.PostgreSQLDialect
+            - name: spring.jpa.hibernate.database-platform
+              value: org.hibernate.spatial.dialect.postgis.PostgisDialect
+            - name: s3.client.endpoint
+              value: minio
+            - name: s3.client.port
+              value: "9000"
+            - name: s3.client.secured
+              value: "false"
+            - name: s3.client.region
+              value: none
+            - name: s3.client.bucket
+              value: pdok
+            - name: s3.client.accesskey
+              valueFrom:
+                secretKeyRef:
+                  name: minio-account
+                  key: accessKey
+            - name: s3.client.secret
+              valueFrom:
+                secretKeyRef:
+                  name: minio-account
+                  key: secretKey
+          image: {{.Values.bgtvspdokdoorlevering.image.name -}}:{{- .Values.bgtsimulator.image.version}}
+          imagePullPolicy: Always
+          name: {{.Values.bgtvspdokdoorlevering.name}}
+          ports:
+            - containerPort: {{.Values.bgtvspdokdoorlevering.service.internalPort}}
+          resources: {}
+      restartPolicy: Always
+#

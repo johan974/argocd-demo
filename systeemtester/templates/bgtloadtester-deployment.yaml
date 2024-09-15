@@ -40,6 +40,10 @@ spec:
               value: org.hibernate.dialect.PostgreSQLDialect
             - name: spring.jpa.hibernate.database-platform
               value: org.hibernate.spatial.dialect.postgis.PostgisDialect
+            - name: pdok.deliverytester.initialize
+              value: http://bgtvspdokdelivery:8095/pdok/doorlevering/initialize
+            - name: pdok.deliverytester.endpoint
+              value: http://bgtvspdokdelivery:8095/pdok/doorlevering/start
             - name: s3.client.endpoint
               value: minio
             - name: s3.client.port
