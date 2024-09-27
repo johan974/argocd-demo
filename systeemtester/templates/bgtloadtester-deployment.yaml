@@ -64,34 +64,10 @@ spec:
                 secretKeyRef:
                   name: minio-account
                   key: secretKey
-          image: {{.Values.systemtester.image.name -}}:{{- .Values.systemtester.image.version}}
+          image: {{.Values.systemtester.image.fulldigest1}}
           imagePullPolicy: Always
           name: {{.Values.systemtester.name}}
           ports:
             - containerPort: {{.Values.systemtester.service.internalPort}}
           resources: {}
       restartPolicy: Always
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 

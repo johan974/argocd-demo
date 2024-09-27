@@ -9,7 +9,7 @@ replicaCount: 1
 systemtester:
   name: bgtloadtester
   image:
-    name: solvedshared/bgtloadtester
+    fulldigest1: solvedshared/bgtloadtester:v20240907
     version: v20240907
   service:
     type: LoadBalancer
@@ -19,7 +19,7 @@ systemtester:
 bgtsimulator:
   name: bgtsimulator
   image:
-    name: solvedshared/bgtsimulator
+    fulldigest2: solvedshared/bgtsimulator:v1
     version: v1
   service:
     type: LoadBalancer
@@ -29,7 +29,7 @@ bgtsimulator:
 bgtvspdokdoorlevering:
   name: bgtvspdokdelivery
   image:
-    name: solvedshared/bgtvspdokdelivery
+    fulldigest3: solvedshared/bgtvspdokdelivery:v1
     version: v1
   service:
     type: LoadBalancer

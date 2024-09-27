@@ -58,25 +58,10 @@ spec:
                 secretKeyRef:
                   name: minio-account
                   key: secretKey
-          image: {{.Values.bgtvspdokdoorlevering.image.name -}}:{{- .Values.bgtsimulator.image.version}}
+          image: {{.Values.bgtvspdokdoorlevering.image.fulldigest3}}
           imagePullPolicy: Always
           name: {{.Values.bgtvspdokdoorlevering.name}}
           ports:
             - containerPort: {{.Values.bgtvspdokdoorlevering.service.internalPort}}
           resources: {}
       restartPolicy: Always
-#
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 

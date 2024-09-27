@@ -62,51 +62,10 @@ spec:
                 secretKeyRef:
                   name: minio-account
                   key: secretKey
-          image: {{.Values.bgtsimulator.image.name -}}:{{- .Values.bgtsimulator.image.version}}
+          image: {{.Values.bgtsimulator.image.fulldigest2}}
           imagePullPolicy: Always
           name: {{.Values.bgtsimulator.name}}
           ports:
             - containerPort: {{.Values.bgtsimulator.service.internalPort}}
           resources: {}
       restartPolicy: Always
-#
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
