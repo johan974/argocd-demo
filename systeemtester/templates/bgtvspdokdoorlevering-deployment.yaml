@@ -38,6 +38,8 @@ spec:
               value: org.hibernate.dialect.PostgreSQLDialect
             - name: spring.jpa.hibernate.database-platform
               value: org.hibernate.spatial.dialect.postgis.PostgisDialect
+            - name: org.springframework.security.level
+              value: "WARN"
             - name: s3.client.endpoint
               value: minio
             - name: s3.client.port

@@ -48,6 +48,8 @@ spec:
               value: minio
             - name: s3.client.port
               value: "9000"
+            - name: org.springframework.security.level
+              value: "WARN"
             - name: s3.client.secured
               value: "false"
             - name: s3.client.region
