@@ -29,7 +29,7 @@ bgtsimulator:
 bgtvspdokdoorlevering:
   name: bgtvspdokdelivery
   image:
-    fulldigest3: solvedshared/bgtvspdokdelivery@sha256:3aed3e730d6c5a49db2c332c01fd611789633b9b412bae8aaadf6c99247ee7a6
+    fulldigest3: solvedshared/bgtvspdokdelivery@sha256:1ce84f2487ea42047a279ede9f261269a8628fe8c6382efca413bf499fc04b65
     version: v1
   service:
     type: LoadBalancer
