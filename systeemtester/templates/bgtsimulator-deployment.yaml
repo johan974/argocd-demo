@@ -44,6 +44,18 @@ spec:
               value: org.hibernate.spatial.dialect.postgis.PostgisDialect
             - name: org.springframework.security.level
               value: "WARN"
+            - name: webdav.url
+              value: http://webdav:80/uploads
+            - name: webdav.user
+              valueFrom:
+                secretKeyRef:
+                  name: webdav-secret
+                  key: user
+            - name: webdav.pw
+              valueFrom:
+                secretKeyRef:
+                  name: webdav-secret
+                  key: password
             - name: s3.client.endpoint
               value: minio
             - name: s3.client.port
