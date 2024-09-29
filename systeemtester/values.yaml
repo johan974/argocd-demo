@@ -19,7 +19,7 @@ systemtester:
 bgtsimulator:
   name: bgtsimulator
   image:
-    fulldigest2: solvedshared/bgtsimulator@sha256:6634b5a4dc2f7c80c28ee5c5678a7e5f03c17494c348f50d59a5b8ece8fe793f
+    fulldigest2: solvedshared/bgtsimulator@sha256:c5ab308d2036fbd684e0a1530a4248ab2052ee40f91d497ee4644a99709dc82e
     version: v1
   service:
     type: LoadBalancer
