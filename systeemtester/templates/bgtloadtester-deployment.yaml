@@ -11,6 +11,7 @@ spec:
     matchLabels:
       io.kompose.service: {{.Values.systemtester.name}}
   strategy: {}
+  revisionHistoryLimit: 0
   template:
     metadata:
       creationTimestamp: null

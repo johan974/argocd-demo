@@ -10,6 +10,7 @@ spec:
     matchLabels:
       io.kompose.service: {{.Values.bgtvspdokdoorlevering.name}}
   strategy: {}
+  revisionHistoryLimit: 0
   template:
     metadata:
       labels:

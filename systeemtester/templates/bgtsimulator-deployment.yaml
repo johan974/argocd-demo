@@ -11,6 +11,7 @@ spec:
     matchLabels:
       io.kompose.service: {{.Values.bgtsimulator.name}}
   strategy: {}
+  revisionHistoryLimit: 0
   template:
     metadata:
       creationTimestamp: null
