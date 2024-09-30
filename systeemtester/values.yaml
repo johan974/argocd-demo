@@ -9,7 +9,7 @@ replicaCount: 1
 systemtester:
   name: bgtloadtester
   image:
-    fulldigest1: solvedshared/bgtloadtester@sha256:91b92081bbff5a0543386ef1788181a6dcffcca8a98967960095d5eb7855a6b1
+    fulldigest1: solvedshared/bgtloadtester@sha256:d7de8d74f065ad2081780909595f239b1cc5cf7e93e6893c7836241a7428bb93
     version: v20240907
   service:
     type: LoadBalancer
