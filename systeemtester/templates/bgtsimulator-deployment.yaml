@@ -29,6 +29,12 @@ spec:
               value: "true"
             - name: mutatieverslag.ophaalverzoek.url
               value: http://{{.Values.systemtester.name -}}:{{- .Values.systemtester.service.internalPort}}/aanleveraar/mutatiestatus
+            - name: logging.file.name
+              value: /var/app/log/simulator/myapp.log
+            - name: logging.file.max-size
+              value: "10MB"
+            - name: logging.file.max-history
+              value: "10"
             - name: spring.activemq.broker-url
               value: tcp://activemq:61616
             - name: delivery.client.endpoint
@@ -83,4 +89,12 @@ spec:
           ports:
             - containerPort: {{.Values.bgtsimulator.service.internalPort}}
           resources: {}
+          volumeMounts:
+            - mountPath: /var/app/log/simulator
+              name: applog-claim0
       restartPolicy: Always
+      volumes:
+        - name: applog-claim0
+          hostPath:
+            path: /run/desktop/mnt/host/g/data/applogs/simulator
+            type: Directory
