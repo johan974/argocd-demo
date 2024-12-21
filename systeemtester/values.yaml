@@ -39,7 +39,7 @@ bgtvspdokdoorlevering:
 systemtesterviewer:
   name: systemtesterviewer
   image:
-    fulldigest4: solvedshared/systemtesterviewer@sha256:606c3de01ef1a70dcba065dc90668b2e51a9dab4c228ff53991fb6abae97c01d
+    fulldigest4: solvedshared/systemtesterviewer@sha256:c39adf720d5e6a5280673f4d83e37bd6536604ce2a232eb75c9af7c5f3da880d
     version: v20241221
   service:
     type: LoadBalancer
