@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: {{ .Values.systemtesterviewer.name }}
+  name: {{.Values.systemtesterviewer.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{ .Values.systemtesterviewer.name }}
+  strategy: {}
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: {{ .Values.systemtesterviewer.name }}
+    spec:
+      containers:
+        - env:
+            - name: systemtester.backend.url
+              value: http://{{ .Values.systemtester.name -}}:{{- .Values.systemtester.service.externalPort}}/loadtester
+          image: {{ .Values.systemtesterviewer.image.fulldigest4 }}
+          imagePullPolicy: Always
+          name: {{ .Values.systemtesterviewer.name }}
+          ports:
+            - containerPort: {{ .Values.systemtesterviewer.service.internalPort }}
+          resources: {}
+      restartPolicy: Always

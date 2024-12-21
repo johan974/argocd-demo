@@ -12,7 +12,7 @@ spec:
   ports:
     - name: "8080"
       port: {{.Values.systemtester.service.externalPort}}
-      targetPort: {{.Values.systemtester.service.internalPort}}
+      targetPort: {{ .Values.systemtester.service.internalPort }}
   selector:
-    io.kompose.service: {{.Values.systemtester.name}}
+    io.kompose.service: {{ .Values.systemtester.name }}
   type: LoadBalancer
