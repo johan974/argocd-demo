@@ -20,7 +20,7 @@ spec:
       containers:
         - env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "johanhoudtvantrudie"
+              value: "bladibladibla"
             - name: MYSQL_DATABASE
               value: "geosoldatabase"
             - name: MYSQL_USER
