@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: mysqldb
+  name: mysqldb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: mysqldb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: mysqldb
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "johanhoudtvantrudie"
+            - name: MYSQL_DATABASE
+              value: "geosoldatabase"
+            - name: MYSQL_USER
+              value: "johan"
+            - name: MYSQL_PASSWORD
+              value: "bladibladibla"
+          image: mysql:8.0
+          imagePullPolicy: Always
+          name: mysqldb
+          ports:
+            - containerPort: 3306
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysqldb-claim0
+      restartPolicy: Always
+      volumes:
+        - name: mysqldb-claim0
+          hostPath:
+            path: /run/desktop/mnt/host/g/data/mysqldb
+            type: Directory
