@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{ .Values.geocachedetectiveapi.name }}
+  name: {{ .Values.geocachedetectiveapi.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{ .Values.geocachedetectiveapi.name }}
+  strategy: {}
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: {{ .Values.geocachedetectiveapi.name }}
+    spec:
+      containers:
+        - env:
+            - name: management.endpoints.web.exposure.include
+              value: "*"
+            - name: management.info.env.enabled
+              value: "true"
+            - name: spring.datasource.url
+              value: jdbc:postgresql://localhost:5432/postgis
+            - name: spring.datasource.username
+              value: postgis
+            - name: spring.datasource.password
+              value: postgis
+            - name: spring.jpa.database-platform
+              value: org.hibernate.dialect.PostgreSQLDialect
+            - name: spring.jpa.hibernate.database-platform
+              value: org.hibernate.spatial.dialect.postgis.PostgisDialect
+            - name: spring.ai.openai.api-key
+              valueFrom:
+                secretKeyRef:
+                  name: openai-secret
+                  key: apikey
+          image: {{ .Values.geocachedetectiveapi.image.fulldigest6 }}
+          imagePullPolicy: Always
+          name: {{ .Values.geocachedetectiveapi.name }}
+          ports:
+            - containerPort: {{ .Values.geocachedetectiveapi.service.internalPort }}
+          resources: {}
+      restartPolicy: Always

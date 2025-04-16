@@ -46,6 +46,26 @@ systemtesterviewer:
     internalPort: 80
     externalPort: 7777
 
+geocachedetectiveviewer:
+  name: geocachedetectiveviewer
+  image:
+    fulldigest5: solvedshared/geocachedetectiveviewer@sha256:df6c86295240b1e883684f544fd223018f1c25bd6cdb43111191e9af6f7fddb3
+    version: v20250416
+  service:
+    type: LoadBalancer
+    internalPort: 80
+    externalPort: 8077
+
+geocachedetectiveapi:
+  name: geocachedetectiveapi
+  image:
+    fulldigest6: solvedshared/geocachedetectiveapi@sha256:34fff763d37353eceda261eacb15ef7f2f6ed8fbab5718c6ccf3e8c3826a704b
+    version: v20250416
+  service:
+    type: LoadBalancer
+    internalPort: 8777
+    externalPort: 8777
+
 springbootadmin:
   name: sbadmin
   port: 8099

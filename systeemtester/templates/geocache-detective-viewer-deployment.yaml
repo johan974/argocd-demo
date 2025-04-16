@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: {{ .Values.geocachedetectiveviewer.name }}
+  name: {{ .Values.geocachedetectiveviewer.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{ .Values.geocachedetectiveviewer.name }}
+  strategy: {}
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: {{ .Values.geocachedetectiveviewer.name }}
+    spec:
+      containers:
+          image: {{ .Values.geocachedetectiveviewer.image.fulldigest5 }}
+          imagePullPolicy: Always
+          name: {{ .Values.geocachedetectiveviewer.name }}
+          ports:
+            - containerPort: {{ .Values.geocachedetectiveviewer.service.internalPort }}
+          resources: {}
+      restartPolicy: Always

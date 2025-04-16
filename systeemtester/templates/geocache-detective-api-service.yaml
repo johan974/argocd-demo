@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{ .Values.geocachedetectiveapi.name }}
+  name: {{ .Values.geocachedetectiveapi.name }}
+spec:
+  ports:
+    - name: "8080"
+      port: {{ .Values.geocachedetectiveapi.service.externalPort }}
+      targetPort: {{ .Values.geocachedetectiveapi.service.internalPort }}
+  selector:
+    io.kompose.service: {{ .Values.geocachedetectiveapi.name }}
+  type: LoadBalancer
