@@ -18,9 +18,9 @@ spec:
         io.kompose.service: {{ .Values.geocachedetectiveviewer.name }}
     spec:
       containers:
+        - name: {{ .Values.geocachedetectiveviewer.name }}
           image: {{ .Values.geocachedetectiveviewer.image.fulldigest5 }}
           imagePullPolicy: Always
-          name: {{ .Values.geocachedetectiveviewer.name }}
           ports:
             - containerPort: {{ .Values.geocachedetectiveviewer.service.internalPort }}
           resources: {}
