@@ -26,9 +26,7 @@ spec:
             - name: management.info.env.enabled
               value: "true"
             - name: spring.datasource.url
-              value: jdbc:postgresql://localhost:5432/postgis
-            - name: spring.datasource.username
-              value: postgis
+              value: jdbc:postgresql://postgresdb:5432/postgis
             - name: spring.datasource.password
               value: postgis
             - name: spring.jpa.database-platform
