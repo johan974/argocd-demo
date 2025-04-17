@@ -65,13 +65,13 @@ spec:
               mountPath: /etc/ssl
               readOnly: true
             {{- end }}
-          readinessProbe:
-            httpGet:
-              scheme: {{ if .Values.tls.enabled }}HTTPS{{ else }}HTTP{{ end }}
-              path: /actuator/health
-              port: {{ if .Values.tls.enabled }}https{{ else }}http{{ end }}
-            initialDelaySeconds: 10
-            periodSeconds: 10
+{{/*          readinessProbe:*/}}
+{{/*            httpGet:*/}}
+{{/*              scheme: {{ if .Values.tls.enabled }}HTTPS{{ else }}HTTP{{ end }}*/}}
+{{/*              path: /actuator/health*/}}
+{{/*              port: {{ if .Values.tls.enabled }}8443{{ else }}http{{ end }}*/}}
+{{/*            initialDelaySeconds: 10*/}}
+{{/*            periodSeconds: 10*/}}
       restartPolicy: Always
       volumes:
         {{- if .Values.tls.enabled }}
