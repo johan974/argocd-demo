@@ -38,7 +38,7 @@ spec:
                 secretKeyRef:
                   name: openai-secret
                   key: apikey
-            {{- if .Values.tls.enabled }}
+            {{- if .Values.tls.backendEnabled }}
             - name: SERVER_SSL_ENABLED
               value: "true"
             - name: SERVER_SSL_KEY_STORE
@@ -60,14 +60,14 @@ spec:
             - containerPort: {{ .Values.geocachedetectiveapi.service.internalPort }}
           resources: {}
           volumeMounts:
-            {{- if .Values.tls.enabled }}
+            {{- if .Values.tls.backendEnabled }}
             - name: keystore-volume
               mountPath: /etc/ssl
               readOnly: true
             {{- end }}
       restartPolicy: Always
       volumes:
-        {{- if .Values.tls.enabled }}
+        {{- if .Values.tls.backendEnabled }}
         - name: keystore-volume
           secret:
             secretName: {{ .Values.tls.backendSecretName }}

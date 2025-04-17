@@ -63,16 +63,19 @@ geocachedetectiveapi:
     version: v20250416
   service:
     type: LoadBalancer
-    internalPort: 8443
-    externalPort: 8443
+    internalPort: 8777
+    externalPort: 8777
 
 springbootadmin:
   name: sbadmin
   port: 8099
   version: v20240910
 
+# The SPA frontend will send any request via the nginx proxy to the backend.
+#  That means that you don't need https/ssl between the frontend and the backend.
 tls:
   enabled: true
+  backendEnabled: false
   frontendSecretName: nginx-tls
   backendSecretName: internal-ssl
   backendSecretPasswordKey: keystore-password
