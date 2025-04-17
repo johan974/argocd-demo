@@ -77,7 +77,7 @@ tls:
   enabled: true
   frontendSecretName: nginx-tls
   backendSecretName: internal-ssl
-  backendSecretPasswordKey: keystore-password
+  backendSecretPasswordKey: passwordKey
   certPath: /etc/nginx/ssl/tls.crt
   keyPath:  /etc/nginx/ssl/tls.key
   keystorePath: /etc/ssl/keystore.p12
