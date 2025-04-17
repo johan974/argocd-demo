@@ -11,6 +11,9 @@ spec:
     - name: "http"
       port: {{ .Values.geocachedetectiveviewer.service.externalPort }}
       targetPort: {{ .Values.geocachedetectiveviewer.service.internalPort }}
+    - name: https
+      port: {{ .Values.geocachedetectiveviewer.service.externalSecurePort }}
+      targetPort: https
   selector:
     io.kompose.service: {{ .Values.geocachedetectiveviewer.name }}
   type: LoadBalancer

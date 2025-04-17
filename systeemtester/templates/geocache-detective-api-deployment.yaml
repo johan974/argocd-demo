@@ -38,10 +38,44 @@ spec:
                 secretKeyRef:
                   name: openai-secret
                   key: apikey
+            {{- if .Values.tls.enabled }}
+            - name: SERVER_SSL_ENABLED
+              value: "true"
+            - name: SERVER_SSL_KEY_STORE
+              value: "file:{{ .Values.tls.keystorePath }}"
+            - name: SERVER_SSL_KEY_STORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.tls.backendSecretName }}
+                  key: {{ .Values.tls.backendSecretPasswordKey }}
+            - name: SERVER_SSL_KEY_STORE_TYPE
+              value: {{ .Values.tls.storeType }}
+            - name: SERVER_SSL_KEY_ALIAS
+              value: {{ .Values.tls.keyAlias }}
+            {{- end }}
           image: {{ .Values.geocachedetectiveapi.image.fulldigest6 }}
           imagePullPolicy: Always
           name: {{ .Values.geocachedetectiveapi.name }}
           ports:
             - containerPort: {{ .Values.geocachedetectiveapi.service.internalPort }}
           resources: {}
+          volumeMounts:
+            {{- if .Values.tls.enabled }}
+            - name: keystore-volume
+              mountPath: /etc/ssl
+              readOnly: true
+            {{- end }}
+          readinessProbe:
+            httpGet:
+              scheme: {{ if .Values.tls.enabled }}HTTPS{{ else }}HTTP{{ end }}
+              path: /actuator/health
+              port: {{ if .Values.tls.enabled }}https{{ else }}http{{ end }}
+            initialDelaySeconds: 10
+            periodSeconds: 10
       restartPolicy: Always
+      volumes:
+        {{- if .Values.tls.enabled }}
+        - name: keystore-volume
+          secret:
+            secretName: {{ .Values.tls.backendSecretName }}
+        {{- end }}

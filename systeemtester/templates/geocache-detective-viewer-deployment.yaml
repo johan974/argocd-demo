@@ -22,6 +22,22 @@ spec:
           image: {{ .Values.geocachedetectiveviewer.image.fulldigest5 }}
           imagePullPolicy: Always
           ports:
-            - containerPort: {{ .Values.geocachedetectiveviewer.service.internalPort }}
+            - name: http
+              containerPort: {{ .Values.geocachedetectiveviewer.service.externalPort }}
+            - name: https
+              containerPort: {{ .Values.geocachedetectiveviewer.service.externalSecurePort }}
           resources: {}
+          # mount the TLS cert/key
+          {{- if .Values.tls.enabled }}
+          volumeMounts:
+            - name: tls-secret
+              mountPath: /etc/nginx/ssl
+              readOnly: true
+          {{- end }}
+      {{- if .Values.tls.enabled }}
+      volumes:
+        - name: tls-secret
+          secret:
+            secretName: {{ .Values.tls.frontendSecretName }}
+      {{- end }}
       restartPolicy: Always

@@ -12,6 +12,9 @@ spec:
     - name: "8080"
       port: {{ .Values.geocachedetectiveapi.service.externalPort }}
       targetPort: {{ .Values.geocachedetectiveapi.service.internalPort }}
+    - name: https
+      port: {{ .Values.geocachedetectiveapi.service.externalSecurePort }}
+      targetPort: https
   selector:
     io.kompose.service: {{ .Values.geocachedetectiveapi.name }}
   type: LoadBalancer

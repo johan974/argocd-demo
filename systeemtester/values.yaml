@@ -55,6 +55,7 @@ geocachedetectiveviewer:
     type: LoadBalancer
     internalPort: 80
     externalPort: 8077
+    externalSecurePort: 443
 
 geocachedetectiveapi:
   name: geocachedetectiveapi
@@ -65,8 +66,20 @@ geocachedetectiveapi:
     type: LoadBalancer
     internalPort: 8777
     externalPort: 8777
+    externalSecurePort: 8443
 
 springbootadmin:
   name: sbadmin
   port: 8099
   version: v20240910
+
+tls:
+  enabled: true
+  frontendSecretName: nginx-tls
+  backendSecretName: internal-ssl
+  backendSecretPasswordKey: keystore-password
+  certPath: /etc/nginx/ssl/tls.crt
+  keyPath:  /etc/nginx/ssl/tls.key
+  keystorePath: /etc/ssl/keystore.p12
+  storeType: PKCS12
+  keyAlias: tomcat
