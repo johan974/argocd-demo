@@ -49,7 +49,7 @@ systemtesterviewer:
 geocachedetectiveviewer:
   name: geocachedetectiveviewer
   image:
-    fulldigest5: solvedshared/geocachedetectiveviewer@sha256:47dc6795de5fbcb35742c114631f3bbcdeb92e45c2aa63065a0632c7c9fc79ea
+    fulldigest5: solvedshared/geocachedetectiveviewer@sha256:db166417c45cc0e210abc9343e6b260bb7f8ce6f8df7ff0c4994baead5998e90
     version: v20250416
   service:
     type: LoadBalancer
