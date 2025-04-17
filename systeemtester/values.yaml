@@ -53,9 +53,8 @@ geocachedetectiveviewer:
     version: v20250416
   service:
     type: LoadBalancer
-    internalPort: 80
-    externalPort: 8077
-    externalSecurePort: 443
+    internalPort: 443
+    externalPort: 8843
 
 geocachedetectiveapi:
   name: geocachedetectiveapi
@@ -64,9 +63,8 @@ geocachedetectiveapi:
     version: v20250416
   service:
     type: LoadBalancer
-    internalPort: 8777
-    externalPort: 8777
-    externalSecurePort: 8443
+    internalPort: 8443
+    externalPort: 8443
 
 springbootadmin:
   name: sbadmin

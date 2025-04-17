@@ -22,10 +22,8 @@ spec:
           image: {{ .Values.geocachedetectiveviewer.image.fulldigest5 }}
           imagePullPolicy: Always
           ports:
-            - name: http
-              containerPort: {{ .Values.geocachedetectiveviewer.service.externalPort }}
             - name: https
-              containerPort: {{ .Values.geocachedetectiveviewer.service.externalSecurePort }}
+              containerPort: {{ .Values.geocachedetectiveviewer.service.internalPort }}
           resources: {}
           # mount the TLS cert/key
           {{- if .Values.tls.enabled }}
