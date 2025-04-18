@@ -14,4 +14,4 @@ spec:
       targetPort: {{ .Values.geocachedetectiveapi.service.internalPort }}
   selector:
     io.kompose.service: {{ .Values.geocachedetectiveapi.name }}
-  type: LoadBalancer
+  type: ClusterIP
