@@ -60,6 +60,9 @@ spec:
             - containerPort: {{ .Values.geocachedetectiveapi.service.internalPort }}
           resources: {}
           volumeMounts:
+            - name: private-key-volume
+              mountPath: /etc/keys
+              readOnly: true
             {{- if .Values.tls.backendEnabled }}
             - name: keystore-volume
               mountPath: /etc/ssl
@@ -67,6 +70,9 @@ spec:
             {{- end }}
       restartPolicy: Always
       volumes:
+        - name: private-key-volume
+          secret:
+            secretName: rsa-private-key-secret
         {{- if .Values.tls.backendEnabled }}
         - name: keystore-volume
           secret:
