@@ -59,7 +59,7 @@ geocachedetectiveviewer:
 geocachedetectiveapi:
   name: geocachedetectiveapi
   image:
-    fulldigest6: solvedshared/geocachedetectiveapi@sha256:5be4256357aa8350a5c00b0176f8da0f12391f079719d041db115ef1eebd900a
+    fulldigest6: solvedshared/geocachedetectiveapi@sha256:26c429d8c33de72488014b1d00efcc34faf3ad9deec41f2872a8dbc7fa528d05
     version: v20250416
   service:
     type: LoadBalancer
