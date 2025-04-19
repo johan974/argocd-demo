@@ -69,7 +69,7 @@ geocachedetectiveapi:
 postgrescrud:
   name: postgrescrud
   image:
-    fulldigest7: solvedshared/postgrescrud@sha256:dae71756cfeb496b87ae11affbb3facaabc375cb198255ae4b364a4c53e21d6c
+    fulldigest7: solvedshared/postgrescrud@sha256:060e1e28cac84b4bfb7534163e9ec3fd2d48b0cd249f89697911f088a4e85d36
     version: v20250419
   service:
     type: LoadBalancer
