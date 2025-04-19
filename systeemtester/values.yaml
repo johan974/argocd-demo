@@ -66,6 +66,16 @@ geocachedetectiveapi:
     internalPort: 8777
     externalPort: 8777
 
+postgrescrud:
+  name: postgrescrud
+  image:
+    fulldigest7: solvedshared/postgrescrud@sha256:dae71756cfeb496b87ae11affbb3facaabc375cb198255ae4b364a4c53e21d6c
+    version: v20250419
+  service:
+    type: LoadBalancer
+    internalPort: 8123
+    externalPort: 8123
+
 springbootadmin:
   name: sbadmin
   port: 8099

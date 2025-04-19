@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{ .Values.postgrescrud.name }}
+  name: {{ .Values.postgrescrud.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{ .Values.postgrescrud.name }}
+  strategy: {}
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/devhome-default: "true"
+        io.kompose.service: {{ .Values.postgrescrud.name }}
+    spec:
+      containers:
+        - env:
+            - name: management.endpoints.web.exposure.include
+              value: "*"
+            - name: management.info.env.enabled
+              value: "true"
+            - name: spring.datasource.url
+              value: jdbc:postgresql://postgresdb:5432/postgis
+            - name: spring.datasource.password
+              value: postgis
+            - name: spring.jpa.database-platform
+              value: org.hibernate.dialect.PostgreSQLDialect
+            - name: spring.jpa.hibernate.database-platform
+              value: org.hibernate.spatial.dialect.postgis.PostgisDialect
+          image: {{ .Values.postgrescrud.image.fulldigest7 }}
+          imagePullPolicy: Always
+          name: {{ .Values.postgrescrud.name }}
+          ports:
+            - containerPort: {{ .Values.postgrescrud.service.internalPort }}
+          resources: {}
+      restartPolicy: Always
